@@ -1,0 +1,50 @@
+@mixin mx-animation($name, $duration, $timing-function: linear,$animation-play-state: paused, $delay: 0, $iteration-count: 1) {
+  -webkit-animation: $name $duration $timing-function $delay $iteration-count; /* Chrome, Safari, Opera */
+  animation: $name $duration $timing-function $delay $iteration-count; /* Standard syntax */
+}
+
+// timing-function constant:
+// linear, ease-in, ease-out, ease-in-out and, cubic-bezier(n,n,n,n)
+// variables user-defined
+$ease-in-out-elastic: cubic-bezier(.45,.2,.88,.25);
+// End user-defined
+
+@mixin mx-keyframes($name) {
+  /* Chrome, Safari, Opera */
+  @-webkit-keyframes $name
+  {
+    @content;
+  }
+
+  /* Standard syntax */
+  @keyframes $name
+  {
+    @content;
+  }
+}
+
+@mixin mx-transition($property, $duration, $timing-function: linear, $delay: 0) {
+  /* For Safari 3.1 to 6.0 */
+  -webkit-transition-property: $property;
+  -webkit-transition-duration: $duration;
+  -webkit-transition-timing-function: $timing-function;
+  -webkit-transition-delay: $delay;
+  /* Standard syntax */
+  transition-property: $property;
+  transition-duration: $duration;
+  transition-timing-function: $timing-function;
+  transition-delay: $delay;
+}
+
+@mixin mx-transform-rotate($deg) {
+  transform:rotate($deg);
+  -ms-transform:rotate($deg); /* IE 9 */
+  -webkit-transform:rotate($deg); /* Opera, Chrome, and Safari */
+}
+
+//value is between 0 to 1
+@mixin mx-opacity($value) {
+  opacity: $value;
+  filter: "alpha(opacity=" + $value*100 + ")";
+  -ms-filter: "alpha(opacity=" + $value*100 + ")";
+}
